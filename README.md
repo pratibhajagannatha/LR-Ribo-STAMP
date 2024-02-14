@@ -43,6 +43,10 @@ Run [IsoQuant](https://github.com/ablab/IsoQuant) on the filtered, aligned reads
 
 ```isoquant.py --reference /path/to/LR-Ribo-STAMP/test/ref/hg19_chr1.fa --genedb /path/to/LR-Ribo-STAMP/test/ref/gencode.v19.annotation.chr1.gtf --bam /path/to/LR-Ribo-STAMP/test/input_dir/Ribo-STAMP_HEK293T_rep1_chr1.readfiltered.sorted.bam --data_type pacbio --prefix Ribo-STAMP_HEK293T_rep1_chr1 --transcript_quantification unique_only --gene_quantification unique_only --output /path/to/LR-Ribo-STAMP/test/output_dir/ --threads 32```
 
+### Step 4
+Split the bam file into smaller bam file for easy mutliprocessing and calling edits at mRNA isoform level. To create the split BAM files, each isoform of a gene having reads is assigned a random number (e.g. Isoform 1, Isoform 2, ..., Isoform N). The reads assigned to isoforms are then placed into the appropriate split BAM based on the isoforms' assigned number. This step also outputs a split_bam dictionary (in [pickle](https://docs.python.org/3/library/pickle.html) file format) that can be used to map isoforms and reads back to splits.
+
+![split_bam_diagram](https://github.com/pratibhajagannatha/LR-Ribo-STAMP/blob/main/LR-ribostamp_splitbam_github_fig.png)
 
 
 
