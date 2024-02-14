@@ -4,6 +4,8 @@ Repository containing scripts to process long-read (LR) Ribo-STAMP data.
 ## About LR-Ribo-STAMP
 LR-Ribo-STAMP is an integrated experimental and computational method that couples long read sequencing with Ribo-STAMP to simultaneously measure transcription and translation at gene and mRNA isoform resolution. 
 
+![main_schematic](https://github.com/pratibhajagannatha/LR-Ribo-STAMP/blob/main/LR-ribostamp_github_main.png)
+
 ## Suggested folder structure
 
 ```
