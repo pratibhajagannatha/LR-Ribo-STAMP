@@ -68,6 +68,7 @@ Use the make_read_level_script_ct.py script to create a bash script that will ru
 #### A. Creating Gene and Isoform Coordinate FASTA files
 
 If you do not already have gene and isoform coordinate fasta files, create a BED file from your GTF for only the exons and UTRs for genes or isoforms. There are a variety of tools you can use to do this. Once you have the BED file, sort the BED file using the following:
+
 ```sort -k1,1 -k2,2n output_exons_utrs.transcript.bed > output_exons_utrs.transcript.sorted.bed```
 
 Merge overlapping exons and UTRs using the following:
