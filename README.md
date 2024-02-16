@@ -63,6 +63,25 @@ Use the make_read_level_script_ct.py script to create a bash script that will ru
 ```python3 /path/to/LR-Ribo-STAMP/scripts/make_read_level_edit_script_ct.py --working_directory /path/to/LR-Ribo-STAMP/test/output_dir/ --gtf_path /path/to/LR-Ribo-STAMP/test/ref/gencode.v19.annotation.chr1.gtf --split_pickle /path/to/LR-Ribo-STAMP/test/output_dir/split_bam_Ribo-STAMP_HEK293T_rep1_chr1 --ref /path/to/LR-Ribo-STAMP/test/ref/hg19.fa --job Ribo-STAMP_HEK293T_rep1_chr1 --script_path /path/to/LR-Ribo-STAMP/scripts/read_level_quant_se_ct_annotated.py```
 
 
+### Step 6
+Once edits have been called successfully on all the split BAM files, the filter_edits_calc_editsC.py script can be used to filter edits and calculate the EditsC metric at gene and isoform levels. The script requires a sample file that contains the sample name, replicate number, condition, and path to the parent directory (sample_name in the folder structure outlined above). The script assumes that the necessary files are within the ```output_dir``` directory. The sample file should look like the following:
+
+```
+sample_name     rep     condition       path
+APO1_1  rep1    APO     /path/to/APO1_1
+APO1_2  rep2    APO     /path/to/APO1_2
+APO1_3  rep3    APO     /path/to/APO1_3
+RPS2_1  rep1    RPS2    /path/to/RPS2_1
+RPS2_2  rep2    RPS2    /path/to/RPS2_2
+RPS2_3  rep3    RPS2    /path/to/RPS2_3
+```
+
+
+Once the sample file is created, run the script similar to the following:
+
+```python3 /path/to/LR-Ribo-STAMP/scripts/filter_edits_calc_editsC.py --sample_file /path/to/sample_file.txt --snp_file /path/to/hg19.commonSNPs147.bed3 --gtf_file/path/to/gencode.v19.annotation.gtf --gene_coordinates_fasta /path/to/merged_exons_utrs.genes.hg19.fasta --transcript_coordinates_fasta /path/to/merged_exons_utrs.transcript.hg19.fasta --output_dir /path/to/output```
+
+
 
 
 
