@@ -182,7 +182,7 @@ if __name__ == "__main__":
     for s in keep_edits:
         for r in keep_edits[s]:
             print(f'{s} {r} : {keep_edits[s][r].shape[0]}')
-            keep_edits[s][r].to_csv(os.path.join(output_dir, f'{s}_{r}_filtered_edits.txt'), sep='\t', index=False)
+            keep_edits[s][r][[0,1,2,3,4,5]].to_csv(os.path.join(output_dir, f'{s}_{r}_filtered_edits_CDS.bed'), sep='\t', index=False, header=None)
 
     gene_cytosine_counts = count_cytosines(gene_coordinates_fasta)
     transcript_cytosine_counts = count_cytosines_transcript(transcript_coordinates_fasta)
