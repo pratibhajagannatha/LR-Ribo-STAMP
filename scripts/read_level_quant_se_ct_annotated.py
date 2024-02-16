@@ -16,11 +16,15 @@ from scipy.special import betainc
 import argparse
 
 '''
-This script is used to identify read level edits when using annotated transcripts. It should be run following split_bam_isoquant.py as some of the output files from that script are used in this one.
+Author: Pratibha Jagannatha (pjaganna@ucsd.edu)
+Input files: directory containing split BAM files (in_dir), output directory (generally same as in_dir), GTF, Fasta, name for split dictionary
+Output file: edit files
+
+This script is used to identify read-level edits when using annotated transcripts. It should be run following split_bam_isoquant.py as some of the output files from that script are used in this one.
 
 Example of how to run this script:
 
-python3 /home/pjaganna1/projects/STAMP/isoform_pipeline/RBFOX2_APO_read_level/cDNA_alignment/notebooks/read_level_quant_se_ct_annotated.py --in_dir ~/scratch/RBFOX2_pipeline_example/read_level_analysis_annotated/RBFOX_1_chr1/output_dir/ --out_dir ~/scratch/RBFOX2_pipeline_example/read_level_analysis_annotated/RBFOX_1_chr1/output_dir/ --gtf_path ~/scratch/RBFOX2_pipeline_example/refs/gencode.v19.annotation.gtf --ref ~/scratch/RBFOX2_pipeline_example/refs/hg19.fa --split_pickle ~/scratch/RBFOX2_pipeline_example/read_level_analysis_annotated/RBFOX_1_chr1/output_dir/split_bam_RBFOX_1_chr1 --split split_bam_1_0
+python3 /path/to/read_level_quant_se_ct_annotated.py --in_dir /path/to/output_dir/ --out_dir /path/to/output_dir/ --gtf_path /path/to/refs/gencode.v19.annotation.gtf --ref /path/to/refs/hg19.fa --split_pickle /path/to/split_bam_dictionary --split split_bam_1_0
 
 '''
 
