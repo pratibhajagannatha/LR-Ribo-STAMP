@@ -64,6 +64,22 @@ Use the make_read_level_script_ct.py script to create a bash script that will ru
 
 
 ### Step 6
+
+#### A. Creating Gene and Isoform Coordinate FASTA files
+
+If you do not already have gene and isoform coordinate fasta files, create a BED file from your GTF for only the exons and UTRs for genes or isoforms. There are a variety of tools you can use to do this. Once you have the BED file, sort the BED file using the following:
+```sort -k1,1 -k2,2n output_exons_utrs.transcript.bed > output_exons_utrs.transcript.sorted.bed```
+
+Merge overlapping exons and UTRs using the following:
+
+```bedtools merge -i output_exons_utrs.transcript.sorted.bed -s -c 4,6 -o distinct > merged_exons_utrs.transcript.hg19.bed```
+
+Obtain the FASTA sequences for the resulting coordinates:
+
+```bedtools getfasta -fi hg19.fa -bed merged_exons_utrs.transcript.hg19.bed -name -s > merged_exons_utrs.transcript.hg19.fasta```
+
+#### B. Filter Edits and Calculate EditsC
+
 Once edits have been called successfully on all the split BAM files, the filter_edits_calc_editsC.py script can be used to filter edits and calculate the EditsC metric at gene and isoform levels. The script requires a sample file that contains the sample name, replicate number, condition, and path to the parent directory (sample_name in the folder structure outlined above). The script assumes that the necessary files are within the ```output_dir``` directory. The sample file should look like the following:
 
 ```
